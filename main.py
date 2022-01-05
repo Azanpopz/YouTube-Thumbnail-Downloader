@@ -56,7 +56,7 @@ async def star(bot, update):
         
         quote=True
     )
-    return:
+    await update.reply_text(
         if " | " in update.text:
             video = update.text.split(" | ", -1)[0]
             quality = update.text.split(" | ", -1)[1]
