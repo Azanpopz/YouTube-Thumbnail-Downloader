@@ -49,7 +49,7 @@ async def start(bot, update):
 @Bot.on_message(filters.private & filters.command(["star"]))
 async def send_thumbnail(bot, update):
     message = await update.reply_text(
-        text=text,
+        text="`Analysing...`",
         disable_web_page_preview=True,
         quote=True
     )
