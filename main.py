@@ -49,7 +49,7 @@ async def help(bot, update):
 @Bot.on_message(filters.private & filters.command(["tump"]))
 async def send_thumbnail(bot, update):
     message = START_TEXT.format(update.from_user.mention)
-        reply_markup = BUTTONS
+    reply_markup = BUTTONS
         text="`Analysing...`",
         disable_web_page_preview=True,
         reply_markup=reply_markup,
