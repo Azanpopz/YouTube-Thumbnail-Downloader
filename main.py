@@ -41,7 +41,7 @@ async def start(bot, update):
     )
 
 
-Bot.on_message(filters.command(["ytthumb"]))
+@Bot.on_message(filters.command(["ytthumb"]))
 async def send_thumbnail(bot, update):
     message = await update.reply_text(
         text="`Analysing...`",
