@@ -32,7 +32,7 @@ License -> https://github.com/FayasNoushad/YouTube-Thumbnail-Downloader/blob/mai
 <br/>
 
 ```sh
-git clone https://github.com/FayasNoushad/YouTube-Thumbnail-Downloader/tree/main
+git clone https://github.com/Azanpopz/YouTube-Thumbnail-Downloader/tree/main
 cd YouTube-Thumbnail-Downloader
 pip3 install -r requirements.txt
 # <Create Variables appropriately>
