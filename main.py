@@ -67,12 +67,6 @@ async def star(bot, update):
             reply_markup=BUTTONS,
             quote=True
         )
-        await message.delete()
-    except Exception as error:
-        await message.edit_text(
-            text=error,
-            disable_web_page_preview=True,
-            reply_markup=BUTTONS
-        )
+        
 
 Bot.run()
