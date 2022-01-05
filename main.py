@@ -50,13 +50,13 @@ async def start(bot, update):
 async def star(bot, update):
     
     
-    await update.reply_text(
+    await update.reply_photo(
         text="`Analysing...`",
         disable_web_page_preview=True,
         
         quote=True
     )
-    await update.reply_text(
+    try:
         if " | " in update.text:
             video = update.text.split(" | ", -1)[0]
             quality = update.text.split(" | ", -1)[1]
