@@ -46,11 +46,14 @@ async def start(bot, update):
         quote=True
     )
 
-@Bot.on_message(filters.private & filters.text | filters.command(["star"]))
+@Bot.on_message(filters.private & filters.command(["star"]))
 async def star(bot, update):
-    message = await update.reply_text(
-        text="`Analysing...`",
+    text = START_TEXT.format(update.from_user.mention)
+    reply_markup = BUTTONS
+    await update.reply_text(
+        text=text,
         disable_web_page_preview=True,
+        reply_markup=reply_markup,
         quote=True
     )
     try:
