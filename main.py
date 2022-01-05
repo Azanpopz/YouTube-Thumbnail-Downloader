@@ -48,7 +48,7 @@ async def start(bot, update):
 
 @Bot.on_message(filters.private & filters.command(["star"]))
 async def star(bot, update):
-    text = START_TEXT.format(update.from_user.mention)
+    
     
     await update.reply_text(
         text="`Analysing...`",
