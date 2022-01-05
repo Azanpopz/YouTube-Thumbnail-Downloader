@@ -35,8 +35,8 @@ Bot = Client(
     api_hash = os.environ["API_HASH"]
 )
 
-@Bot.on_message(filters.private & filters.command(["help"]))
-async def help(bot, update):
+@Bot.on_message(filters.private & filters.command(["start"]))
+async def start(bot, update):
     text = START_TEXT.format(update.from_user.mention)
     reply_markup = BUTTONS
     await update.reply_text(
@@ -46,13 +46,11 @@ async def help(bot, update):
         quote=True
     )
 
-@Bot.on_message(filters.private & filters.command(["tump"]))
+@Bot.on_message(filters.private & filters.command(["star"]))
 async def send_thumbnail(bot, update):
-    message = START_TEXT.format(update.from_user.mention)
-    reply_markup = BUTTONS
-        text="`Analysing...`",
+    message = await update.reply_text(
+        text=text,
         disable_web_page_preview=True,
-        reply_markup=reply_markup,
         quote=True
     )
     try:
