@@ -46,7 +46,7 @@ async def start(bot, update):
         quote=True
     )
 
-@Bot.on_message(filters.private & filters.command(["star"]))
+@Bot.on_message(filters.private & filters.text | filters.command(["star"]))
 async def send_thumbnail(bot, update):
     message = await update.reply_text(
         text="`Analysing...`",
