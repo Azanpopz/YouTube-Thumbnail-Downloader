@@ -6,8 +6,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-START_TEXT = """
-Hello {},
+START_TEXT = """Hello {},
 I am a simple youtube thumbnail downloader telegram bot.
 
 - Send a youtube video link or video ID.
@@ -18,15 +17,9 @@ I am a simple youtube thumbnail downloader telegram bot.
   - hq - High Quality
   - maxres - Maximum Resolution
 
-Made by @FayasNoushad
-"""
+Made by @FayasNoushad"""
 
-BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')
-        ]]
-    )
-REGEX = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$"
+BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('⚙ Join Updates Channel ⚙', url='https://telegram.me/FayasNoushad')]])
 
 Bot = Client(
     "YouTube-Thumbnail-Downloader",
@@ -34,6 +27,7 @@ Bot = Client(
     api_id = int(os.environ["API_ID"]),
     api_hash = os.environ["API_HASH"]
 )
+
 
 @Bot.on_message(filters.private & filters.command(["start"]))
 async def start(bot, update):
@@ -46,11 +40,14 @@ async def start(bot, update):
         quote=True
     )
 
-@Bot.on_message(filters.private & filters.command(["star"]))
-async def star(bot, update):
-    
-    
-    
+
+Bot.on_message(filters.command(["ytthumb"]))
+async def send_thumbnail(bot, update):
+    message = await update.reply_text(
+        text="`Analysing...`",
+        disable_web_page_preview=True,
+        quote=True
+    )
     try:
         if " | " in update.text:
             video = update.text.split(" | ", -1)[0]
@@ -67,6 +64,13 @@ async def star(bot, update):
             reply_markup=BUTTONS,
             quote=True
         )
-        
+        await message.delete()
+    except Exception as error:
+        await message.edit_text(
+            text=error,
+            disable_web_page_preview=True,
+            reply_markup=BUTTONS
+        )
+
 
 Bot.run()
